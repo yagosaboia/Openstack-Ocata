@@ -40,9 +40,9 @@ function initializate_fernet
 function bootstrap_keystone
 {
 	keystone-manage bootstrap --bootstrap-password openstack \
-  --bootstrap-admin-url http://10.0.0.4:35357/v3/ \
-  --bootstrap-internal-url http://10.0.0.4:5000/v3/ \
-  --bootstrap-public-url http://10.0.0.4:5000/v3/ \
+  --bootstrap-admin-url http://10.0.2.4:35357/v3/ \
+  --bootstrap-internal-url http://10.0.2.4:5000/v3/ \
+  --bootstrap-public-url http://10.0.2.4:5000/v3/ \
   --bootstrap-region-id RegionOne
 }
 
@@ -86,11 +86,11 @@ function create_auth_user_and_role
 function verify_operation
 {
 	 unset OS_AUTH_URL OS_PASSWORD
-	openstack --os-auth-url http://10.0.0.4:35357/v3 \
+	openstack --os-auth-url http://10.0.2.4:35357/v3 \
 	  --os-project-domain-name default --os-user-domain-name default \
 	  --os-project-name admin --os-username admin token issue
 
-	openstack --os-auth-url http://10.0.0.4:5000/v3 \
+	openstack --os-auth-url http://10.0.2.4:5000/v3 \
 	  --os-project-domain-name default --os-user-domain-name default \
 	  --os-project-name demo --os-username demo token issue
 }
